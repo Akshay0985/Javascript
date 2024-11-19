@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Propogation</title>
+    <style>
+      #div1 {
+        padding: 24px;
+        border: 1px solid black;
+      }
+
+      #div2 {
+        padding: 18px;
+        border: 1px solid black;
+      }
+
+      #div3 {
+        padding: 5px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Learning Event Prapogation</h2>
+    <div id="div1">
+      div1
+      <div id="div2">
+        div2
+        <div id="div3">div3</div>
+      </div>
+    </div>
+    <script>
+      //Event Bubbling
+      // document.querySelector("#div1").addEventListener("click",() => {
+      //     console.log("DIV1");
+      // });
+
+      // document.querySelector("#div2").addEventListener("click",() => {
+      //     console.log("DIV2");
+      // });
+
+      // document.querySelector("#div3").addEventListener("click",() => {
+      //     console.log("DIV3");
+      //     event.stopPropagation(); // Prevents event from reaching the parent
+      // });
+
+      // Event Capturing
+      document.querySelector("#div1").addEventListener(
+        "click",
+        () => {
+          console.log("DIV1");
+        },
+        true
+      );
+
+      document.querySelector("#div2").addEventListener(
+        "click",
+        () => {
+          console.log("DIV2");
+          event.stopPropagation();
+        },
+        true
+      );
+
+      document.querySelector("#div3").addEventListener(
+        "click",
+        () => {
+          console.log("DIV3");
+        },
+        true
+      );
+    </script>
+  </body>
+</html>
